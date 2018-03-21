@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("tschettler")]
 [assembly: AssemblyProduct("Log4Net.EntityLogging")]
-[assembly: AssemblyCopyright("Copyright ©  2017 Travis Schettler")]
+[assembly: AssemblyCopyright("Copyright ©  2018 Travis Schettler")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
