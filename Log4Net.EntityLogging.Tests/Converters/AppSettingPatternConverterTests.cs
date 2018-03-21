@@ -1,13 +1,8 @@
 ﻿using log4net.Util;
 using Log4Net.EntityLogging.Converters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Log4Net.EntityLogging.Tests.Converters
 {

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using log4net.Layout.Pattern;
 using Log4Net.EntityLogging.Attributes;
-using log4net.Layout.Pattern;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using System;
 
 namespace Log4Net.EntityLogging.Tests.Attributes
 {

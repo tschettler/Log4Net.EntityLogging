@@ -6,7 +6,6 @@ using Log4Net.EntityLogging.Attributes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.Common;
 using System.Reflection;
 
 namespace Log4Net.EntityLogging
@@ -124,11 +123,6 @@ namespace Log4Net.EntityLogging
 
         protected override void SendBuffer(LoggingEvent[] events)
         {
-            SendBuffer(null, events);
-        }
-
-        protected virtual void SendBuffer(DbTransaction transaction, LoggingEvent[] events)
-        {
             var items = new List<TEntity>();
 
             foreach (var loggingEvent in events)
@@ -138,10 +132,10 @@ namespace Log4Net.EntityLogging
                 items.Add(item);
             }
 
-            Save(transaction, items);
+            Save(items);
         }
 
-        protected virtual void Save(DbTransaction transaction, List<TEntity> items)
+        protected virtual void Save(List<TEntity> items)
         {
         }
     }
