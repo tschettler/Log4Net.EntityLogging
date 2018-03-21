@@ -1,16 +1,9 @@
 ﻿using log4net.Core;
 using log4net.Layout;
-using log4net.Util;
 using Log4Net.EntityLogging.Adapters;
 using Log4Net.EntityLogging.Attributes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NSubstitute;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Log4Net.EntityLogging.Tests.Adapters
 {

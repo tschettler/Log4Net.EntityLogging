@@ -1,11 +1,7 @@
-﻿using log4net.Layout;
-using log4net.Layout.Pattern;
-using log4net.Util;
+﻿using log4net.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Log4Net.EntityLogging.Attributes
 {
