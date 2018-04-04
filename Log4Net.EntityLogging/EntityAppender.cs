@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Log4Net.EntityLogging
 {
@@ -137,6 +138,15 @@ namespace Log4Net.EntityLogging
 
         protected virtual void Save(List<TEntity> items)
         {
+			this.SaveAsync(items)
+				.ConfigureAwait(false)
+				.GetAwaiter()
+				.GetResult();
         }
+
+		protected virtual async Task SaveAsync(List<TEntity> items)
+		{
+			await Task.CompletedTask;
+		}
     }
 }
