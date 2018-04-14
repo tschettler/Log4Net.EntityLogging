@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Log4Net.EntityLogging
 {
@@ -109,7 +110,7 @@ namespace Log4Net.EntityLogging
             // Convert to null if the value is one of log4net's predefined values
             if (value.Equals(SystemInfo.NullText) || value.Equals(SystemInfo.NotAvailableText))
             {
-                result = propertyType.IsValueType ? Activator.CreateInstance(propertyType) : null;
+                result = propertyType.GetTypeInfo().IsValueType ? Activator.CreateInstance(propertyType) : null;
             }
             else if (!(propertyType == valueType || propertyType.IsAssignableFrom(valueType))
                 && converter.CanConvertFrom(valueType))
@@ -137,6 +138,15 @@ namespace Log4Net.EntityLogging
 
         protected virtual void Save(List<TEntity> items)
         {
+			this.SaveAsync(items)
+				.ConfigureAwait(false)
+				.GetAwaiter()
+				.GetResult();
         }
+
+		protected virtual async Task SaveAsync(List<TEntity> items)
+		{
+			await Task.CompletedTask;
+		}
     }
 }

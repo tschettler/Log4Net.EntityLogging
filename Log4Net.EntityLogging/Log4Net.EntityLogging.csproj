@@ -1,88 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6084FFB-4E0C-4036-B055-171430F9F9D3}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Log4Net.EntityLogging</RootNamespace>
-    <AssemblyName>Log4Net.EntityLogging</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
+    <Copyright>Copyright ©  2018 Travis Schettler</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/tschettler/Log4Net.EntityLogging/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/tschettler/Log4Net.EntityLogging</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tschettler/Log4Net.EntityLogging</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>log4net entity logging appender attribute</PackageTags>
+    <PackageReleaseNotes>Converted to .NET Standard</PackageReleaseNotes>
+    <Authors>tschettler</Authors>
+    <Description>Log4Net library for logging to entities</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
+    <PackageReference Include="log4net" Version="2.0.6" />
+    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.1.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Attributes\LayoutAttribute.cs" />
-    <Compile Include="Attributes\DynamicPatternLayoutAttribute.cs" />
-    <Compile Include="Attributes\RawUtcTimeStampLayoutAttribute.cs" />
-    <Compile Include="Attributes\RawTimeStampLayoutAttribute.cs" />
-    <Compile Include="Attributes\XmlLayoutSchemaLog4jAttribute.cs" />
-    <Compile Include="Attributes\XmlLayoutAttribute.cs" />
-    <Compile Include="Attributes\SimpleLayoutAttribute.cs" />
-    <Compile Include="Attributes\ExceptionLayoutAttribute.cs" />
-    <Compile Include="Attributes\RawPropertyLayoutAttribute.cs" />
-    <Compile Include="Attributes\PatternLayoutAttribute.cs" />
-    <Compile Include="Adapters\RawLayoutAdapter.cs" />
-    <Compile Include="Adapters\LayoutAdapter.cs" />
-    <Compile Include="Adapters\DynamicPatternLayoutAdapter.cs" />
-    <Compile Include="Adapters\ExceptionLayoutAdapter.cs" />
-    <Compile Include="Adapters\IRawLayoutAdapter.cs" />
-    <Compile Include="Adapters\PatternLayoutAdapter.cs" />
-    <Compile Include="Adapters\RawTimeStampLayoutAdapter.cs" />
-    <Compile Include="Adapters\RawUtcTimeStampLayoutAdapter.cs" />
-    <Compile Include="Adapters\RawPropertyLayoutAdapter.cs" />
-    <Compile Include="Adapters\SimpleLayoutAdapter.cs" />
-    <Compile Include="Adapters\XmlLayoutAdapter.cs" />
-    <Compile Include="Adapters\XmlLayoutSchemaLog4jAdapter.cs" />
-    <Compile Include="Converters\AppSettingPatternConverter.cs" />
-    <Compile Include="EntityAppender.cs" />
-    <Compile Include="ILayoutAdapterProvider.cs" />
-    <Compile Include="LayoutAdapterProvider.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Key.snk" />
-    <None Include="Log4Net.EntityLogging.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
