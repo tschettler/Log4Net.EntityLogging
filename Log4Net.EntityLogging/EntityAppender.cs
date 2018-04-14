@@ -110,7 +110,7 @@ namespace Log4Net.EntityLogging
             // Convert to null if the value is one of log4net's predefined values
             if (value.Equals(SystemInfo.NullText) || value.Equals(SystemInfo.NotAvailableText))
             {
-                result = propertyType.IsValueType ? Activator.CreateInstance(propertyType) : null;
+                result = propertyType.GetTypeInfo().IsValueType ? Activator.CreateInstance(propertyType) : null;
             }
             else if (!(propertyType == valueType || propertyType.IsAssignableFrom(valueType))
                 && converter.CanConvertFrom(valueType))

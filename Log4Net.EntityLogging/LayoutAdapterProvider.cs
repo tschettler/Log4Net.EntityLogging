@@ -4,21 +4,24 @@ using Log4Net.EntityLogging.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Log4Net.EntityLogging
 {
     public class LayoutAdapterProvider : ILayoutAdapterProvider
     {
-        protected static List<IRawLayoutAdapter> LayoutAdapters { get; set; }
+		private static TypeInfo LayoutAdapterTypeInfo = typeof(IRawLayoutAdapter).GetTypeInfo();
+
+		protected static List<IRawLayoutAdapter> LayoutAdapters { get; set; }
 
         static LayoutAdapterProvider()
         {
             LayoutAdapters = new List<IRawLayoutAdapter>();
-            var assembly = typeof(LayoutAdapterProvider).Assembly;
+            var assembly = typeof(LayoutAdapterProvider).GetTypeInfo().Assembly;
 
             foreach (Type current in
                 from t in assembly.GetTypes()
-                where !t.IsAbstract && typeof(IRawLayoutAdapter).IsAssignableFrom(t)
+                where IsLayoutAdapter(t)
                 select t)
             {
                 var instance = Activator.CreateInstance(current) as IRawLayoutAdapter;
@@ -34,5 +37,11 @@ namespace Log4Net.EntityLogging
 
             return layout;
         }
+
+		private static bool IsLayoutAdapter(Type type)
+		{
+			var typeInfo = type.GetTypeInfo();
+			return !typeInfo.IsAbstract && LayoutAdapterTypeInfo.IsAssignableFrom(typeInfo);
+		}
     }
 }

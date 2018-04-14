@@ -2,12 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Log4Net.EntityLogging.Attributes
 {
     public class PatternLayoutAttribute : LayoutAttribute
     {
-        public List<Type> Converters { get; protected set; }
+		private static TypeInfo PatternConverterTypeInfo = typeof(PatternConverter).GetTypeInfo();
+
+		public List<Type> Converters { get; protected set; }
 
         public string Pattern { get; protected set; }
 
@@ -32,7 +35,7 @@ namespace Log4Net.EntityLogging.Attributes
 
         private bool IsPatternConverter(Type type)
         {
-            var valid = typeof(PatternConverter).IsAssignableFrom(type);
+            var valid = PatternConverterTypeInfo.IsAssignableFrom(type.GetTypeInfo());
             return valid;
         }
     }
